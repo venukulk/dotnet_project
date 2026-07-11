@@ -3,13 +3,17 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /source
 
-# Copy project file and restore as distinct layers
-COPY *.slnx .
-COPY *.csproj .
+# Copy solution and project files
+COPY *.sln .
+COPY **/*.csproj ./
+
+# Restore dependencies
 RUN dotnet restore
 
-# Copy source code and publish  app
+# Copy remaining source code
 COPY . .
+
+# Publish the app
 RUN dotnet publish --no-restore -o /app
 
 # Runtime stage
@@ -17,4 +21,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 EXPOSE 8080
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT ["./aspnetapp"]
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
