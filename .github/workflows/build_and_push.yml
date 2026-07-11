@@ -16,17 +16,21 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
       - name: Build image
         uses: docker/build-push-action@v7
         with:
           context: .
-          tags: myorg/myapp:${{ github.sha }}
+          tags: venukulk/dotnet:${{ github.sha }}
           sbom: ${{ github.event_name != 'pull_request' }}
           provenance: ${{ github.event_name != 'pull_request' }}
-
+          push: true  # Push the image to enable attestations
+      
       - name: Run Docker Scout
         uses: docker/scout-action@v1
         with:
           command: cves,quickview
-          image: myorg/myapp:${{ github.sha }}
+          image: venukulk/dotnet:${{ github.sha }}
           to-latest: true
