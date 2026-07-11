@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          dockerfile: ./Dockerfile
+          dockerfile: ./aspnet/Dockerfile
           tags: venukulk/dotnet:${{ github.sha }}
           sbom: ${{ github.event_name != 'pull_request' }}
           provenance: ${{ github.event_name != 'pull_request' }}
