@@ -25,7 +25,7 @@ jobs:
           provenance: ${{ github.event_name != 'pull_request' }}
 
       - name: Run Docker Scout
-        uses: docker/scout-action@latest
+        uses: docker/scout-action@v1
         with:
           command: cves,quickview
           image: myorg/myapp:${{ github.sha }}
