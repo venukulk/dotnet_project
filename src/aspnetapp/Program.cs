@@ -3,7 +3,7 @@ using aspnetapp;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to test container.
+// Add services to container.
 builder.Services.AddRazorPages();
 builder.Services.AddHealthChecks();
 

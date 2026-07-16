@@ -15,7 +15,7 @@ permissions:
 jobs:
   call-docker-scan:
     # Points to your reusable workflow file path
-    uses: ./.github/workflows/docker-scan-reusable.yml
+    uses: ./.github/workflows/reusable_scan.yml
     with:
       context: .
       dockerfile_path: src/aspnetapp/Dockerfile
