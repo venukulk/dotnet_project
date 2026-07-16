@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # Copy solution and project files
-COPY ["aspnetapp.csproj", "src/aspnetapp/"]
+COPY ["src/aspnetapp/aspnetapp.csproj", "src/aspnetapp/"]
 
 # Restore dependencies
 RUN dotnet restore "src/aspnetapp/aspnetapp.csproj"

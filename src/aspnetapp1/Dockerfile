@@ -4,16 +4,16 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # Copy solution and project files
-COPY ["src/aspnetapp/aspnetapp.csproj", "src/aspnetapp/"]
+COPY ["src/aspnetapp1/aspnetapp1.csproj", "src/aspnetapp1/"]
 
 # Restore dependencies
-RUN dotnet restore "src/aspnetapp/aspnetapp.csproj"
+RUN dotnet restore "src/aspnetapp1/aspnetapp1.csproj"
 
 # Copy remaining source code
 COPY . .
 
 # Publish the app
-RUN dotnet publish "src/aspnetapp/aspnetapp.csproj" -c Release -o /app/publish
+RUN dotnet publish "src/aspnetapp1/aspnetapp1.csproj" -c Release -o /app/publish
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
