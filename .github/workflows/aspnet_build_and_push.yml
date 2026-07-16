@@ -32,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: src/aspnet/Dockerfile
+          file: src/aspnetapp/Dockerfile
           tags: venukulk/aspnet:${{ github.sha }}
           sbom: ${{ github.event_name != 'pull_request' }}
           provenance: ${{ github.event_name != 'pull_request' }}
