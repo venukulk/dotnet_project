@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - src/aspnet/**
+      - 'src/aspnet/**'
   pull_request:
     branches: [ main ]
 
