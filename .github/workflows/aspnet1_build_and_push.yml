@@ -1,9 +1,9 @@
-name: Scan Docker Images
+name: Aspnetapp1 Scan Docker Images
 on:
   push:
     branches: [ main ]
     paths:
-      - src/aspnetapp1/**
+      - 'src/aspnetapp1/**'
   pull_request:
     branches: [ main ]
 
